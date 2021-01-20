@@ -5,7 +5,7 @@ A discord.py skeleton repository for making discord.py bots.
 Basic features such as logging and cogs currently exist, this will be expanded in future releases
 
 ## How to install
-I am under the assumption you have your bot's token at hand and have already created a bot.
+I am under the assumption you have your bot's token at hand and have already created a bot (without all the code).
 1. To get started, `pip install` the following requirements (or make sure they are already installed).
    - discord
    - colorama
