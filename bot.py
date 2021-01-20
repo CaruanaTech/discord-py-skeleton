@@ -2,9 +2,7 @@ import json
 import sys
 from colorama import Fore as color, init
 import logging
-import ctypes
 import discord
-import asyncio
 import os
 from discord.ext import commands
 
@@ -44,21 +42,15 @@ else:
     sys.exit(1)
 
 
-def start_bot(cogs):
-    if cogs < 1:
-        logging.warning(color.RED +
-                        "No cogs have been found in /application/cogs, quitting program." +
-                        color.RESET)
-        sys.exit(1)
-
+def start_bot():
     # initialise discord bot
-    elif "PREFIX" not in config:
+    if "PREFIX" not in config or config["PREFIX"] == "":
         logging.warning(color.RED +
                         "prefix value not set, please check your config file" +
                         color.RESET)
         sys.exit(1)
 
-    elif "TOKEN" not in config:
+    elif "TOKEN" not in config or config["TOKEN"] == "":
         logging.warning(color.RED +
                         "Unable to locate bot token, check your config.json" +
                         color.RESET)
@@ -76,6 +68,10 @@ def start_bot(cogs):
 
 # load cogs
 active_cogs = 0
+logging.warning(color.CYAN +
+                "Attempting to load cogs" +
+                color.RESET)
+
 for filename in os.listdir("./application/cogs"):
     if filename.endswith(".py"):
         cog_name = filename[:-3]
@@ -83,6 +79,11 @@ for filename in os.listdir("./application/cogs"):
         logging.warning(color.LIGHTBLUE_EX + f"loaded '{cog_name}'" + color.RESET)
         active_cogs += 1
 
+if active_cogs < 1:
+    logging.warning(color.RED +
+                    "No cogs have been found in /application/cogs, quitting program." +
+                    color.RESET)
+    sys.exit(1)
 
-
-start_bot(active_cogs)
+else:
+    start_bot()
