@@ -2,7 +2,6 @@ import json
 import sys
 from colorama import Fore as color, init
 import logging
-import discord
 import os
 from discord.ext import commands
 
@@ -17,7 +16,8 @@ logging.basicConfig(filename="logs.log",
                     level=logging.DEBUG)
 console = logging.StreamHandler()
 console.setLevel(logging.WARNING)
-console.setFormatter(logging.Formatter("[ %(asctime)s ] %(message)s", "%m/%d/%Y %I:%M:%S %p"))
+console.setFormatter(logging.Formatter("[ %(asctime)s ] %(message)s",
+                     "%m/%d/%Y %I:%M:%S %p"))
 logging.getLogger('').addHandler(console)
 
 # load config
@@ -27,7 +27,8 @@ try:
 
 except Exception as e:
     logging.warning(color.RED +
-                    "unable to open config.json - please check it is in the root directory" +
+                    "unable to open config.json - please check it"
+                    " is in the root directory" +
                     color.RESET)
     logging.warning(color.RED + str(e) + color.RESET)
     sys.exit(1)
@@ -76,12 +77,15 @@ for filename in os.listdir("./application/cogs"):
     if filename.endswith(".py"):
         cog_name = filename[:-3]
         bot.load_extension(f"application.cogs.{cog_name}")
-        logging.warning(color.LIGHTBLUE_EX + f"loaded '{cog_name}'" + color.RESET)
+        logging.warning(color.LIGHTBLUE_EX +
+                        f"loaded '{cog_name}'" +
+                        color.RESET)
         active_cogs += 1
 
 if active_cogs < 1:
     logging.warning(color.RED +
-                    "No cogs have been found in /application/cogs, quitting program." +
+                    "No cogs have been found in /application/cogs,"
+                    " quitting program." +
                     color.RESET)
     sys.exit(1)
 
