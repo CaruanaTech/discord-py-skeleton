@@ -18,3 +18,20 @@ I am under the assumption you have your bot's token at hand and have already cre
 4. enter the root directory in your command prompt and type `python3 bot.py`
 
 note: if your config isnt set correctly then the bot will not run. make sure that you have followed the steps correctly.
+
+## Common methods file
+this file is for storing all of the methods that are called frequently within your code, some examples being:
+- input validation/sanitisation
+- data manipulation
+- etc
+
+## Logging
+This code uses `colorama` and `logging` to make your bot's code output clean. here is a below snippet of how to log *stuff*:
+- input:
+   ```py
+   logging.warning(color.RED + "text goes here" + color.RESET)```
+- output:
+
+   `[DD/MM/YY HH:MM:SS AM/PM] text goes here`
+
+to look at what colors are available for logging check the [colorama docs](https://pypi.org/project/colorama/) 

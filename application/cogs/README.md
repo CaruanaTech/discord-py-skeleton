@@ -1,5 +1,6 @@
 # Creating cogs
 cogs are the most important piece of this bot, as they hold the commands that your users will use. Please use this readme to understand how to add a new cog into your code.
+
 ## Creating the file for your cog
 1. create a new python file in application/cogs with a simple name. (userModeration.py for example)
 2. paste the below snippet of code into the new file
@@ -12,10 +13,13 @@ cogs are the most important piece of this bot, as they hold the commands that yo
         def __init__(self, bot):
             self.bot = bot
 
+        # commands go here
+
     def setup(bot):
         bot.add_cog(className(bot))
     ```
     make sure to replace `className` with the name of your cog (this can be the name of your python file, if you want).
+
 ## Adding commands to your cog
 Now that your file is created, it is time to add a command!
 Inside your new class, under the `__init__` method, add this code snippet, replacing "command_name" with your command name (duh):
