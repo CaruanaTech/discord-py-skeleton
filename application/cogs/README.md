@@ -1,5 +1,12 @@
 # Creating cogs
-cogs are the most important piece of this bot, as they hold the commands that your users will use. Please use this readme to understand how to add a new cog into your code.
+cogs are the most important piece of this bot, as they hold the commands that your users will use. 
+
+I have done all of the code in bot.py to load cogs into your bot. as long as your cogs are
+- in application/cogs
+- end in .py
+- cause no syntax errors
+
+then they will work. Please use this readme to understand how to add a new cog into your code.
 
 ## Creating the file for your cog
 1. create a new python file in application/cogs with a simple name. (userModeration.py for example)
